@@ -1,0 +1,20 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: cnpg-system
+  labels:
+    app: logical-backup
+    cnpg.io/pluginName: logical-backup.dalibo.com
+  annotations:
+    cnpg.io/pluginClientSecret: logical-backup-controller-client-tls
+    cnpg.io/pluginServerSecret: logical-backup-controller-server-tls
+    cnpg.io/pluginPort: '9090'
+  name: logical-backup
+spec:
+  ports:
+    - port: 9090
+      protocol: TCP
+      targetPort: 9090
+  selector:
+    app: logical-backup
