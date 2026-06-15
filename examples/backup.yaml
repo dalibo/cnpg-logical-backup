@@ -1,0 +1,11 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Backup
+metadata:
+  name: backup-sample
+spec:
+  method: plugin
+  pluginConfiguration:
+    name: logical-backup.dalibo.com
+  cluster:
+    name: cluster-sample

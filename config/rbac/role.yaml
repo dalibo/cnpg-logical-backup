@@ -1,0 +1,42 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: manager-role
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - persistentvolumeclaims
+  verbs:
+  - create
+  - get
+  - list
+  - patch
+  - watch
+- apiGroups:
+  - logical-backup.dalibo.com
+  resources:
+  - logicalbackups
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - logical-backup.dalibo.com
+  resources:
+  - logicalbackups/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - logical-backup.dalibo.com
+  resources:
+  - logicalbackups/status
+  verbs:
+  - get
+  - patch
+  - update

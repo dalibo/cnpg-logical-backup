@@ -1,0 +1,12 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: ScheduledBackup
+metadata:
+  name: scheduled-backup-example
+spec:
+  method: plugin
+  pluginConfiguration:
+    name: logical-backup.dalibo.com
+  cluster:
+    name: cluster-sample
+  schedule: 0 15 * * * *

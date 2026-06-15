@@ -1,0 +1,15 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: cluster-sample
+spec:
+  # set to Never, because we use kind and image should be loaded on
+  # the Kubernetes cluster and not pulled from an external registry.
+  imagePullPolicy: IfNotPresent
+  instances: 1
+  plugins:
+    - name: logical-backup.dalibo.com
+      enabled: true
+  storage:
+    size: 1Gi

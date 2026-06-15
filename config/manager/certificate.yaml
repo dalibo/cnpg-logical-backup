@@ -1,0 +1,46 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: controller-client-tls
+  namespace: cnpg-system
+spec:
+  commonName: logical-backup-controller-client
+  duration: 2160h
+  isCA: false
+  issuerRef:
+    group: cert-manager.io
+    kind: Issuer
+    name: selfsigned-issuer
+  renewBefore: 360h
+  secretName: logical-backup-controller-client-tls
+  usages:
+    - client auth
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: controller-server-tls
+  namespace: cnpg-system
+spec:
+  commonName: logical-backup
+  dnsNames:
+    - logical-backup
+  duration: 2160h
+  isCA: false
+  issuerRef:
+    group: cert-manager.io
+    kind: Issuer
+    name: selfsigned-issuer
+  renewBefore: 360h
+  secretName: logical-backup-controller-server-tls
+  usages:
+    - server auth
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: selfsigned-issuer
+  namespace: cnpg-system
+spec:
+  selfSigned: {}

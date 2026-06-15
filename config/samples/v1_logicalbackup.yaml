@@ -1,0 +1,10 @@
+---
+apiVersion: logical-backup.dalibo.com/v1
+kind: LogicalBackup
+metadata:
+  labels
+    app.kubernetes.io/name: logical-backup
+    app.kubernetes.io/managed-by: kustomize
+  name: logicalbackup-sample
+spec:
+  # TODO(user): Add fields here
